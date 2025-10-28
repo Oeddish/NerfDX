@@ -314,7 +314,10 @@ namespace NerfDX.DirectInput
             {
                 foreach (DeviceType deviceType in DEVICE_TYPES)
                 {
-                    IList<DeviceInstance> foundDevices = directInput.GetDevices(deviceType, DeviceEnumerationFlags.AllDevices);
+                    IList<DeviceInstance> foundDevices = directInput.GetDevices(
+                        deviceType, 
+                        DeviceEnumerationFlags.AllDevices | DeviceEnumerationFlags.AttachedOnly);
+//                         | DeviceEnumerationFlags.ForceFeedback);
 
                     foreach (DeviceInstance device in foundDevices)
                     {
@@ -422,7 +425,7 @@ namespace NerfDX.DirectInput
 
         private void WaitingThreadProc()
         {
-            Logger.Info(THREAD_NAME_WAITING + " thread started");
+            Logger.Info(THREAD_NAME_WAITING + " thread started...");
             List<WaitHandle> waitHandleList = new List<WaitHandle>();
 
             UpdateWaitHandles(waitHandleList);

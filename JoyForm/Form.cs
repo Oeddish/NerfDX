@@ -45,7 +45,7 @@ namespace JoyForm
                 // May throw SharpDXException
                 directInput.Initialize();
 
-                // This is also happens OnEventControllersChanged()
+                // Update the form - this is also happens OnEventControllersChanged()
                 UpdateConnectedDevices(directInput.GetConnectedDeviceInfos());
             }
             catch (SharpDXException e)
